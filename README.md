@@ -1,5 +1,9 @@
 # InvestigacionDSS
 Investigación Aplicada: Frameworks
 
-Colaboradores:
-Xander Martinez
+
+Listado de colaboradores:
+ - Xander Martinez
+ - Carlos Campos
+ - Ludwin Martinez
+
