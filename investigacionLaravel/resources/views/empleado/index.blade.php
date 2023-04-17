@@ -1,3 +1,6 @@
+@extends('plantilla')
+@section('contenedor')
+
 <div class="container">
     @if(Session::has('mensaje'))
         <div class="alert alert-success alert-dismissible" role="alert">
@@ -75,5 +78,10 @@
             @endforeach
         </tbody>
     </table>
+    {!!$empleados->links() !!}
+    @endif
+</div>
+@endsection
+
     @endif
 </div>
