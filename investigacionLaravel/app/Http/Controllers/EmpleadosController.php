@@ -157,6 +157,12 @@ class EmpleadosController extends Controller
             'salario.between' => 'El campo salario es debe estar entre 100 y 10,000'
         ];
 
+<<<<<<< HEAD
+        //Para que distiga qué tipo de modificación será
+        //PATCH es parcial: solo cambiará el salario y la demás información seguirá siendo
+        // la del registro
+=======
+<<<<<<< HEAD
         //Para que distiga qué tipo de modificación será
         //PATCH es parcial: solo cambiará el salario y la demás información seguirá siendo
         // la del registro
@@ -206,6 +212,60 @@ class EmpleadosController extends Controller
         //Redirige a la ruta "empleado" para indicar que se realizó con éxito este método
         return redirect('empleado')->with('mensaje','¡Empleado modificado exitosamente!');
         
+=======
+        //Se realiza una validación.
+        $this->validate($request, $campos, $mensajes);
+>>>>>>> fb28bae3637496f1d712542b66b89e8b6428be8d
+
+        //PUT: actualización completa de los datos, según se hayan modificado
+        $peticion = $request['_method'];
+
+        if($peticion == "PATCH"){
+
+            //Solicitamos la información del empleado a la tabla
+            $empleado = Empleado::findOrFail($id);
+
+            //Cambiamos el salario al que se ingresó
+            $empleado['salario']=$request['salario'];
+
+            //Los datos se almacenan en formato de arreglo para 
+            // que se respete la lógica del proceso
+            $datosEmpleado = [
+                'nombre' =>  $empleado['nombre'],
+                'apellidos' =>  $empleado['apellidos'],
+                'edad' =>  $empleado['edad'],
+                'salario' =>  $empleado['salario']
+            ];
+        }else if($peticion == "PUT"){
+        
+            //Se realiza una validación.
+            $this->validate($request, $campos, $mensajes);
+
+            //Se almacenan los datos recibidos excluyendo el "token" que 
+            // se envia como "certificado" de peticiones válidas y 
+            // "method" que es el parametro que indica qué tipo de 
+            // método HTTP se está enviando (para actualizar y segun las rutas
+            // son PUT y PATH)
+            
+            $datosEmpleado = request()->except(['_token', '_method']);
+        }
+        
+        
+
+        //Se busca el registro que coincida con el parámetro "id"
+        // para luego actualizar el valor de sus campos.
+        Empleado::where('id', '=', $id)->update($datosEmpleado);
+
+        //No se utiliza, pero es para verificar si se actualiza la información.
+        $empleado = Empleado::findOrFail($id);
+        
+        //Redirige a la ruta "empleado" para indicar que se realizó con éxito este método
+        return redirect('empleado')->with('mensaje','¡Empleado modificado exitosamente!');
+<<<<<<< HEAD
+        
+=======
+>>>>>>> 265ddc2ab1be391e6608a6e67160d2bbd653db51
+>>>>>>> fb28bae3637496f1d712542b66b89e8b6428be8d
     }
 
     /**

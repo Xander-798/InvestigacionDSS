@@ -117,6 +117,10 @@ class EmpleadoController extends Controller
         return $empleado;
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> fb28bae3637496f1d712542b66b89e8b6428be8d
     public function updatePATCH(Request $request){
         //Esta función se utiliza para actualizar un registro, se le elimino el parámetro $id
         // ya que no es necesario en la lógica de esta aplicación
@@ -136,6 +140,11 @@ class EmpleadoController extends Controller
         return $empleado;
     }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 265ddc2ab1be391e6608a6e67160d2bbd653db51
+>>>>>>> fb28bae3637496f1d712542b66b89e8b6428be8d
     /**
      * Remove the specified resource from storage.
      *
