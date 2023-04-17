@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 @extends('plantilla')
 @section('contenedor')
+=======
+>>>>>>> 265ddc2ab1be391e6608a6e67160d2bbd653db51
 <div class="container">
     @if(Session::has('mensaje'))
         <div class="alert alert-success alert-dismissible" role="alert">
@@ -37,6 +40,7 @@
                         class="d-inline"
                     >
                         @csrf
+<<<<<<< HEAD
                         {{ method_field('PATCH') }}
                         <div class="form-group">
                             <label for="salario">Salario</label>
@@ -44,6 +48,18 @@
                         </div>
                         <input type="submit"
                             value="Editando con PATCH"
+=======
+                        {{ method_field('PUT') }}
+                        <div class="form-group">
+                            <label for="salario">Salario</label>
+                            <input type="hidden" class="form-control" name="nombre" id="nombre" min="10000" step="any" value="{{isset($empleado->nombre)?$empleado->nombre:old('nombre')}}" required>
+                            <input type="hidden" class="form-control" name="apellidos" id="apellidos" min="10000" step="any" value="{{isset($empleado->apellidos)?$empleado->apellidos:old('apellidos')}}" required>
+                            <input type="hidden" class="form-control" name="edad" id="edad" min="10000" step="any" value="{{isset($empleado->edad)?$empleado->edad:old('edad')}}" required>
+                            <input type="number" class="form-control" name="salario" id="salario" min="100" max="10000" step="any" value="{{isset($empleado->salario)?$empleado->salario:old('salario')}}" required>
+                        </div>
+                        <input type="submit"
+                            value="Editando con PUT"
+>>>>>>> 265ddc2ab1be391e6608a6e67160d2bbd653db51
                             class="btn btn-danger"
                         >
                     </form>
@@ -74,7 +90,12 @@
             @endforeach
         </tbody>
     </table>
+<<<<<<< HEAD
     {!!$empleados->links() !!}
     @endif
 </div>
 @endsection
+=======
+    @endif
+</div>
+>>>>>>> 265ddc2ab1be391e6608a6e67160d2bbd653db51

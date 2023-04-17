@@ -157,6 +157,7 @@ class EmpleadosController extends Controller
             'salario.between' => 'El campo salario es debe estar entre 100 y 10,000'
         ];
 
+<<<<<<< HEAD
         //Para que distiga qué tipo de modificación será
         //PATCH es parcial: solo cambiará el salario y la demás información seguirá siendo
         // la del registro
@@ -206,6 +207,27 @@ class EmpleadosController extends Controller
         //Redirige a la ruta "empleado" para indicar que se realizó con éxito este método
         return redirect('empleado')->with('mensaje','¡Empleado modificado exitosamente!');
         
+=======
+        //Se realiza una validación.
+        $this->validate($request, $campos, $mensajes);
+
+        //Se almacenan los datos recibidos excluyendo el "token" que 
+        // se envia como "certificado" de peticiones válidas y 
+        // "method" que es el parametro que indica qué tipo de 
+        // método HTTP se está enviando (para actualizar y segun las rutas
+        // son PUT y PATH)
+        $datosEmpleado= request()->except(['_token', '_method']);
+
+        //Se busca el registro que coincida con el parámetro "id"
+        // para luego actualizar el valor de sus campos.
+        Empleado::where('id', '=',$id)->update($datosEmpleado);
+
+        //No se utiliza, pero es para verificar si se actualiza la información.
+        $empleado = Empleado::findOrFail($id);
+
+        //Redirige a la ruta "empleado" para indicar que se realizó con éxito este método
+        return redirect('empleado')->with('mensaje','¡Empleado modificado exitosamente!');
+>>>>>>> 265ddc2ab1be391e6608a6e67160d2bbd653db51
     }
 
     /**
