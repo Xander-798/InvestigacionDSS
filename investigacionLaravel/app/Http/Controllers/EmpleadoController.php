@@ -117,6 +117,25 @@ class EmpleadoController extends Controller
         return $empleado;
     }
 
+    public function updatePATCH(Request $request){
+        //Esta función se utiliza para actualizar un registro, se le elimino el parámetro $id
+        // ya que no es necesario en la lógica de esta aplicación
+
+        //Usamos este método para encontrar el registro, validando que exista
+        $empleado = Empleado::findOrFail($request->id);
+
+        //Cada atributo del objeto es obtenido de "Request" o solicitud
+        //pues la variable $request trae variables con los valores necesarios
+        //que se guardan en el objeto Empleado creado
+        $empleado->salario = $request->salario;
+        
+        //Se guardan los datos con este método
+        $empleado->save();
+
+        //Devuelve qué empleado fue modificado
+        return $empleado;
+    }
+
     /**
      * Remove the specified resource from storage.
      *
